@@ -23,6 +23,8 @@ class Validate
             if ($this->hasTwoOrMoreValidation($validation)) {
                 $validations = explode(':', $validation);
 
+                
+
                 foreach ($validations as $validation) {
                     $this->$validation($field);  // $this->required($field) // $this->phone($field) ...
                 }

@@ -14,10 +14,15 @@ $assets = new \Twig\TwigFunction('assets', function($target) {
     echo assets($target);
 });
 
+$dd = new \Twig\TwigFunction('dd', function($dados){
+    dd($dados);
+});
+
 
 
 // Responsável por retornar as functions
 return [ 
   $message,
   $assets,
+  $dd,
 ];

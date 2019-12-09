@@ -28,7 +28,8 @@ CREATE TABLE users
     id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(50) NOT NULL,
     email VARCHAR(50) NOT NULL UNIQUE,
-    phone VARCHAR(15) NOT NULL
+    phone VARCHAR(15) NOT NULL,
+    photo VARCHAR(255),
 );
 
 INSERT INTO users (name, email, phone)

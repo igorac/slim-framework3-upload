@@ -54,6 +54,22 @@ trait Validations
         }
     }
 
+    protected function image(string $field)
+    {
+        $file = $_FILES[$field]['name'];
+
+        if (empty($file)) {
+            $this->errors[$field][] = flash($field, error('Esse campo é obrigatório'));
+        }
+
+
+        $extension = pathinfo($file, PATHINFO_EXTENSION);
+
+        if (!in_array($extension, ['png', 'jpg'])) {
+            $this->errors[$field][] = flash($field, error("Não aceitamos arquivos com a extensão {$extension}"));
+        }
+    }
+
     public function hasErrors(): bool
     {
         // return (count($this->errors) > 0) ? true : false;
