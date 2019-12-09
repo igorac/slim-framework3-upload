@@ -1,0 +1,52 @@
+{% extends 'master.html' %}
+
+{% block conteudo %}
+
+<h2>Lista de usuários</h2>
+
+{{ message('message') }}
+
+
+<form action="">
+    <div class="d-flex">
+        <input type="text" name="s" class="form-control" placeholder="Buscar usuário">
+        <button type="submit" class="btn btn-success btn-sm ml-2">Buscar</button>
+    </div>
+</form>
+
+<table class="table table-borderless table-hover mt-3">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>E-mail</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.name }}</td>
+            <td>{{ user.email }}</td>
+            <td class="d-flex">
+                <a href="/user/edit/{{ user.id }}"  class="btn btn-sm btn-success mr-2">Editar</a>
+                <form action="/user/delete/{{ user.id }}" method="post">
+                    <input type="hidden" name="_METHOD" value="DELETE" readonly>
+                    <button type="submit" class="btn btn-sm btn-danger">Deletar</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+
+    <tfoot>
+        <tr>
+            <td>{{ links | raw }}</td>
+        </tr>
+    </tfoot>
+</table>
+
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'master.html' %}
+
+{% block conteudo %}
+    <h2>Posts</h2>
+
+    <table class="table table-striped">
+        <tr>
+            <td>Id</td>
+            <td>Title</td>
+        </tr>
+
+        {% for post in posts %}
+        <tr>
+            <td>{{ post.id }}</td>
+            <td>{{ post.title }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'master.html' %}
+
+
+{% block conteudo %}
+
+
+
+<h2 class="mt-3">Editar Usuário</h2>
+
+    <hr>
+
+    {{ message('message') }}
+
+    <form action="/user/update/{{ user.id }}" method="post">
+
+        <input type="hidden" name="_METHOD" value="PUT" readonly/>
+
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" name="name" class="form-control" value="{{ user.name }}">
+            {{ message('name') }}
+        </div>
+
+        <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="email" name="email" class="form-control" value="{{ user.email }}">
+            {{ message('email') }}
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Telefone</label>
+            <input type="text" name="phone" class="form-control" value="{{ user.phone }}">
+            {{ message('phone') }}
+        </div>
+
+        <button type="submit" class="btn btn-success">Editar</button>
+    </form>
+
+{% endblock %}
